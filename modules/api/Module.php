@@ -18,7 +18,9 @@ class Module extends \yii\base\Module
     public function init()
     {
         parent::init();
-
+        $this->modules = [
+            'v1' => 'app\modules\api\modules\v1\Module'
+        ];
         // custom initialization code goes here
     }
 }
