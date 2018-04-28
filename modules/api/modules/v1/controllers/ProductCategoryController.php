@@ -21,7 +21,10 @@ use yii\web\HttpException;
 class ProductCategoryController extends Controller
 {
     /**
-     * Добавление товара в китегорию
+     * Добавление товара в категорию
+     * @param $category_id
+     * @param $product_id
+     * @return array
      */
     public function actionCreate($category_id,$product_id){
         $model = new ProductCategory();
