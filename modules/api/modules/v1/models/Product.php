@@ -56,10 +56,17 @@ class Product extends \yii\db\ActiveRecord
         return $this->hasMany(ProductCategory::className(), ['product_id' => 'id']);
     }
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function getCategories(){
         return $this->hasMany(Category::className(),['id'=>'category_id'])->via('productCategories');
     }
 
+    /**
+     * Дополнение списка полей для отображения списка категорий при выборке
+     * @return array
+     */
     public function fields()
     {
         $fields = parent::fields();
