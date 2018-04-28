@@ -5,7 +5,7 @@ namespace app\modules\api\modules\v1;
 /**
  * v1 module definition class
  */
-class module extends \yii\base\Module
+class Module extends \yii\base\Module
 {
     /**
      * {@inheritdoc}
@@ -18,7 +18,7 @@ class module extends \yii\base\Module
     public function init()
     {
         parent::init();
-
+        \Yii::$app->errorHandler->errorAction = 'api/v1/default/api-error';
         // custom initialization code goes here
     }
 }

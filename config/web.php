@@ -47,6 +47,23 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => [
+                        'api/v1/categories'=>'api/v1/category',
+                        'api/v1/products'=>'api/v1/product',
+                        'api/v1/product-category/'=>'api/v1/product-category/'
+                    ],
+                ],
+                'POST api/v1/categories/<category_id:\d+>/products/<product_id:\d+>'=>'api/v1/product-category/create',
+                'DELETE api/v1/categories/<category_id:\d+>/products/<product_id:\d+>'=>'api/v1/product-category/delete',
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => [
+                        'products'=>'api/v1/product',
+                    ],
+                    'prefix' => 'api/v1/categories/<category_id:\d+>'
+                ]
             ],
         ],
     ],

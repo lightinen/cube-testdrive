@@ -12,6 +12,7 @@ use Yii;
  * @property double $price
  *
  * @property ProductCategory[] $productCategories
+ * @property Category[] $categories
  */
 class Product extends \yii\db\ActiveRecord
 {
@@ -53,5 +54,19 @@ class Product extends \yii\db\ActiveRecord
     public function getProductCategories()
     {
         return $this->hasMany(ProductCategory::className(), ['product_id' => 'id']);
+    }
+
+    public function getCategories(){
+        return $this->hasMany(Category::className(),['id'=>'category_id'])->via('productCategories');
+    }
+
+    public function fields()
+    {
+        $fields = parent::fields();
+        $fields['categories'] = function($model){
+            /** @var Product $model */
+            return $model->categories;
+        };
+        return $fields;
     }
 }

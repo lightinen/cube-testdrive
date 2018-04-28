@@ -2,7 +2,7 @@
 
 namespace app\modules\api\modules\v1\controllers;
 
-use yii\web\Controller;
+use yii\rest\Controller;
 
 /**
  * Default controller for the `v1` module
@@ -10,11 +10,15 @@ use yii\web\Controller;
 class DefaultController extends Controller
 {
     /**
-     * Renders the index view for the module
-     * @return string
+     * обработчик ошибок
+     * @return array
      */
-    public function actionIndex()
-    {
-        return $this->render('index');
+    public function actionApiError(){
+        return [
+            'success'=>false,
+            'data' => [
+                \Yii::$app->errorHandler->exception
+            ]
+        ];
     }
 }
